@@ -26,3 +26,12 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+/.vs
+/Application/bin/Debug/net10.0
+/Application/obj
+/Domain/bin/Debug/net10.0
+/Domain/obj
+/HotelManagementSystem/bin/Debug/net10.0
+/HotelManagementSystem/obj
+/Infrastructure/bin/Debug/net10.0
+/Infrastructure/obj
