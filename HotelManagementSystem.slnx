@@ -1,0 +1,14 @@
+<Solution>
+  <Folder Name="/Core/">
+    <Project Path="Application/Application.csproj" />
+    <Project Path="Domain/Domain.csproj" />
+  </Folder>
+  <Folder Name="/Infrastructure/">
+    <Project Path="Infrastructure/Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/Presentation/" />
+  <Folder Name="/SQL/">
+    <File Path="ResetDb.sql" />
+  </Folder>
+  <Project Path="HotelManagementSystem/HotelManagementSystem.csproj" />
+</Solution>
