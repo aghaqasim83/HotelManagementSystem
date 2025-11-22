@@ -1,4 +1,5 @@
 using HotelManagementSystem;
+using HotelManagementSystem.Common.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -27,6 +28,8 @@ if (app.Environment.IsDevelopment())
     });
 
 }
+
+app.UseMiddleware<GlobalApiExceptionHandlerMiddleware>();
 
 app.UseHttpsRedirection();
 

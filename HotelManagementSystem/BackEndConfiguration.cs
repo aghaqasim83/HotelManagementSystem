@@ -8,6 +8,7 @@ using Microsoft.OpenApi;
 using Infrastructure.DataAccessManager.EFCore;
 using Infrastructure.SeedManager;
 using Application;
+using HotelManagementSystem.Common.Handlers;
 
 public static class BackEndConfiguration
 {
@@ -18,6 +19,8 @@ public static class BackEndConfiguration
 
         //>>> Infrastructure Layer
         services.AddInfrastructureServices(configuration);
+
+        services.AddExceptionHandler<CustomExceptionHandler>();
 
         //>>> Common
 
@@ -44,15 +47,6 @@ public static class BackEndConfiguration
         services.AddSwaggerGen(c =>
         {
             c.SwaggerDoc("v1", new OpenApiInfo { Title = "Indotalent API", Version = "v1" });
-            //c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
-            //{
-            //    Name = "Authorization",
-            //    Type = SecuritySchemeType.ApiKey,
-            //    Scheme = "bearer",
-            //    BearerFormat = "JWT",
-            //    In = ParameterLocation.Header,
-            //    Description = "JWT Authorization header using the Bearer scheme."
-            //});
         });
 
 
