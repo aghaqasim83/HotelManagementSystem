@@ -1,5 +1,5 @@
 select * from Booking
-select * from Room
+select * from Room order by HotelId
 select * from Hotel
 
 delete from Booking
