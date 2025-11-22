@@ -5,19 +5,20 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.DataAccessManager.EFCore.Contexts;
 
+// C#
 public class DataContext : DbContext, IEntityDbSet
 {
     public DataContext(DbContextOptions<DataContext> options) : base(options) { }
 
     public DbSet<Hotel> Hotel { get; set; }
+    public DbSet<Room> Room { get; set; }
+    public DbSet<Booking> Booking { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
-
         modelBuilder.ApplyConfiguration(new HotelConfiguration());
         modelBuilder.ApplyConfiguration(new RoomConfiguration());
         modelBuilder.ApplyConfiguration(new BookingConfiguration());
-
     }
 }

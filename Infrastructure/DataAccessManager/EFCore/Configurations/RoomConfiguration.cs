@@ -25,8 +25,9 @@ public class RoomConfiguration : BaseEntityConfiguration<Room>
 
         // Room type (e.g. "Single", "Double", "Deluxe")
         builder.Property(x => x.Type)
+               .HasConversion<string>()
                .HasMaxLength(50)
-               .IsRequired(false);
+               .IsRequired();
 
         // Capacity must be present
         builder.Property(x => x.Capacity)

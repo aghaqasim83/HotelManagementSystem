@@ -1,5 +1,6 @@
 ﻿using Application.Common.Repositories;
 using Domain.Entities;
+using Domain.Enums;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -38,15 +39,15 @@ public class HotelSeeder
 
     private static Hotel GetHotel(string hotelName)
     {
-        var hotel = new Hotel { Name = "Test Hotel", Rooms = new List<Room>() };
+        var hotel = new Hotel { Name = hotelName, Rooms = new List<Room>() };
 
         // 6 rooms seeded: 2 Single(1), 2 Double(2), 2 Deluxe(3)
-        hotel.Rooms.Add(new Room { Number = "101", Type = "Single", Capacity = 1, HotelId = hotel.Id });
-        hotel.Rooms.Add(new Room { Number = "102", Type = "Single", Capacity = 1, HotelId = hotel.Id });
-        hotel.Rooms.Add(new Room { Number = "201", Type = "Double", Capacity = 2, HotelId = hotel.Id });
-        hotel.Rooms.Add(new Room { Number = "202", Type = "Double", Capacity = 2, HotelId = hotel.Id });
-        hotel.Rooms.Add(new Room { Number = "301", Type = "Deluxe", Capacity = 3, HotelId = hotel.Id });
-        hotel.Rooms.Add(new Room { Number = "302", Type = "Deluxe", Capacity = 3, HotelId = hotel.Id });
+        hotel.Rooms.Add(new Room { Number = "101", Type = RootTypeEnum.Single, Capacity = 1, HotelId = hotel.Id });
+        hotel.Rooms.Add(new Room { Number = "102", Type = RootTypeEnum.Single, Capacity = 1, HotelId = hotel.Id });
+        hotel.Rooms.Add(new Room { Number = "201", Type = RootTypeEnum.Double, Capacity = 2, HotelId = hotel.Id });
+        hotel.Rooms.Add(new Room { Number = "202", Type = RootTypeEnum.Double, Capacity = 2, HotelId = hotel.Id });
+        hotel.Rooms.Add(new Room { Number = "301", Type = RootTypeEnum.Deluxe, Capacity = 3, HotelId = hotel.Id });
+        hotel.Rooms.Add(new Room { Number = "302", Type = RootTypeEnum.Deluxe, Capacity = 3, HotelId = hotel.Id });
 
         return hotel;
     }
