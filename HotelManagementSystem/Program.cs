@@ -28,7 +28,7 @@ if (app.Environment.IsDevelopment())
     });
 
 }
-
+app.UseCors();
 app.UseMiddleware<GlobalApiExceptionHandlerMiddleware>();
 
 app.UseHttpsRedirection();
