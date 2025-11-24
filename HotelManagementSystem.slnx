@@ -6,7 +6,6 @@
   <Folder Name="/Infrastructure/">
     <Project Path="Infrastructure/Infrastructure.csproj" />
   </Folder>
-  <Folder Name="/Presentation/" />
   <Folder Name="/SQL/">
     <File Path="ResetDb.sql" />
   </Folder>

@@ -3,9 +3,6 @@ using Application.Common.Repositories;
 using Domain.Common;
 using Infrastructure.DataAccessManager.EFCore.Contexts;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Infrastructure.DataAccessManager.EFCore.Repositories;
 
@@ -72,6 +69,4 @@ public class CommandRepository<T> : ICommandRepository<T> where T : BaseEntity
 
         return query;
     }
-
-
 }

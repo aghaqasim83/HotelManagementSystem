@@ -1,7 +1,6 @@
 ﻿using Domain.Common;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System.Runtime.CompilerServices;
 using static Domain.Common.Constants;
 
 namespace Infrastructure.DataAccessManager.EFCore.Common;

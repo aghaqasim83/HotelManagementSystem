@@ -39,10 +39,6 @@ public static class BackEndConfiguration
             });
         services.AddEndpointsApiExplorer();
 
-        //services.AddSwaggerGen(c =>
-        //{
-        //    c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "API", Version = "v1" });
-        //});
         services.AddSwaggerGen(c =>
         {
             c.SwaggerDoc("v1", new OpenApiInfo { Title = "Indotalent API", Version = "v1" });
