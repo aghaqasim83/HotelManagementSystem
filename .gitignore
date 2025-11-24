@@ -35,3 +35,5 @@ yarn-error.log*
 /HotelManagementSystem/obj
 /Infrastructure/bin/Debug/net10.0
 /Infrastructure/obj
+/Application.UnitTests/bin/Debug/net10.0
+/Application.UnitTests/obj
