@@ -64,6 +64,6 @@ public class GetHotelByNameHandlerTests
         var handler = new GetHotelByNameHandler(hotelRepo.Object);
         var result = await handler.Handle(new GetHotelByNameRequest { Name = "Nope" }, CancellationToken.None);
 
-        result.Data.Should().BeNull();
+        result.Data.Should().BeEmpty();
     }
 }
