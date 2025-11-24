@@ -40,10 +40,9 @@ How it works
 - Requests routed to controllers (e.g., `api/booking`, `api/hotel`).
 - Controllers forward requests to MediatR (`ISender`) which invokes command/query handlers.
 - Handlers use `ICommandRepository<T>.GetQuery()` and EF Core to query/store data and use `IUnitOfWork` to commit.
-- Infrastructure registers EF Core DbContext(s) and repository/unit-of-work implementations through extension methods.
-- Startup seeds data in development via seed manager extension methods (`host.SeedDemoData()`).
+- Infrastructure registers EF Core DbContext(s) and repository/unit-of-work implementations through extension methods.- 
 
-Important endpoints (examples)
+**Important endpoints (examples)**
 - Find hotel by name
   - GET /api/hotel/FindByName?name=Premier%20Inn
 - Find available rooms
@@ -54,6 +53,13 @@ Important endpoints (examples)
   - Body: CreateBookingRequest { RoomId, GuestName, CheckIn, CheckOut, NumberOfGuests }
 - Find booking by reference
   - GET /api/booking/FindByReference?reference={bookingReference}
+- Clear database (development only)
+  -	POST /api/DatabaseManager/Clear
+  -	Response: ApiSuccessResult<ClearDatabaseResult> (content: ClearDatabaseResult { bool Success; string? Message })
+- Seed database (development only)
+  - POST /api/DatabaseManager/Seed?seedDemo={true|false}
+  -	Query: seedDemo (optional, boolean) — default true (when true runs demo seeding)
+  -	Response: ApiSuccessResult<SeedDatabaseResult> (content: SeedDatabaseResult { bool Success; string? Message })
 
 Swagger / OpenAPI
 - The project includes Swashbuckle. In Development the Swagger UI is enabled.

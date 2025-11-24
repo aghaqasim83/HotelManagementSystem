@@ -1,4 +1,5 @@
 ﻿using Application.Common.Repositories;
+using Application.DTO;
 using Domain.Entities;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
@@ -17,39 +18,32 @@ public class GetHotelByNameHandler : IRequestHandler<GetHotelByNameRequest, GetH
     public async Task<GetHotelByNameResult> Handle(GetHotelByNameRequest request, CancellationToken cancellationToken = default)
     {
         var nameNormalized = request.Name.Trim().ToLowerInvariant();
+        var pattern = $"%{nameNormalized}%";
 
-        var hotel = await _hotelRepository
+        var hotels = await _hotelRepository
             .GetQuery()
             .AsNoTracking()
             .Include(h => h.Rooms)
-            .Where(h => !h.IsDeleted && h.Name != null && EF.Functions.Like(h.Name, request.Name))
-            // EF.Functions.Like will match exact case-insensitively depending on DB collation;
-            // fallback to ToLower comparison for portability:
-            .FirstOrDefaultAsync(h => !h.IsDeleted && h.Name != null && h.Name.ToLower() == nameNormalized, cancellationToken)
+            .Where(h => !h.IsDeleted && h.Name != null)
+            .Where(h =>
+                EF.Functions.Like(h.Name.ToLower(), pattern) // substring (partial) match, case-insensitive
+                || h.Name.ToLower() == nameNormalized)       // exact match fallback
+            .ToListAsync(cancellationToken)
             .ConfigureAwait(false);
 
-        if (hotel is null)
-            return new GetHotelByNameResult { Data = null };
-
-        var dto = new GetHotelByNameResult.HotelDto
+        var dtos = hotels.Select(h => new HotelDto
         {
-            Id = hotel.Id,
-            Name = hotel.Name,
-        };
+            Id = h.Id,
+            Name = h.Name,
+        }).ToList();
 
-        return new GetHotelByNameResult { Data = dto };
+        return new GetHotelByNameResult { Data = dtos };
     }
 }
 
 public class GetHotelByNameResult
 {
-    public HotelDto? Data { get; set; }
-
-    public class HotelDto
-    {
-        public string Id { get; set; } = null!;
-        public string Name { get; set; } = null!;
-    }
+    public List<HotelDto> Data { get; set; } = new();
 }
 
 public class GetHotelByNameRequest : IRequest<GetHotelByNameResult>

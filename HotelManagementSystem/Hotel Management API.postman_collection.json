@@ -1,0 +1,200 @@
+{
+	"info": {
+		"_postman_id": "5507f307-b756-4dd5-848f-d5e6a8f7a65e",
+		"name": "Hotel Management API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1750944",
+		"_collection_link": "https://galactic-firefly-285932.postman.co/workspace/Woodmac~a6d86bc0-1df9-4d08-8797-720d146612be/collection/1750944-5507f307-b756-4dd5-848f-d5e6a8f7a65e?action=share&source=collection_link&creator=1750944"
+	},
+	"item": [
+		{
+			"name": "Find Rooms",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5191/api/hotel/AvailableRooms?hotelId=cdaf9889-0841-4ee9-9e2c-b39c051e35a3&checkIn=2025-12-01&checkOut=2025-12-03&people=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5191",
+					"path": [
+						"api",
+						"hotel",
+						"AvailableRooms"
+					],
+					"query": [
+						{
+							"key": "hotelId",
+							"value": "cdaf9889-0841-4ee9-9e2c-b39c051e35a3"
+						},
+						{
+							"key": "checkIn",
+							"value": "2025-12-01"
+						},
+						{
+							"key": "checkOut",
+							"value": "2025-12-03"
+						},
+						{
+							"key": "people",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find Hotel",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5191/api/hotel/FindByName?name=Premier%20Inn",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5191",
+					"path": [
+						"api",
+						"hotel",
+						"FindByName"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Premier%20Inn"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Book Room",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"roomId\": \"a367a93c-cd66-4164-af8a-b39c051e35a3\",\r\n  \"guestName\": \"John Doe\",\r\n  \"checkIn\": \"2025-12-02\",\r\n  \"checkOut\": \"2025-12-03\",\r\n  \"numberOfGuests\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5191/api/Booking/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5191",
+					"path": [
+						"api",
+						"Booking",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "FindBookingByReference",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5191/api/booking/FindByReference?reference=a92bbff0-489c-4957-bc23-5d85acd9c164",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5191",
+					"path": [
+						"api",
+						"booking",
+						"FindByReference"
+					],
+					"query": [
+						{
+							"key": "reference",
+							"value": "a92bbff0-489c-4957-bc23-5d85acd9c164"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Clean DB",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5191/api/Admin/Clear",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5191",
+					"path": [
+						"api",
+						"Admin",
+						"Clear"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Seed Database",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5191/api/DatabaseManager/Seed?seedDemo=true",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5191",
+					"path": [
+						"api",
+						"DatabaseManager",
+						"Seed"
+					],
+					"query": [
+						{
+							"key": "seedDemo",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

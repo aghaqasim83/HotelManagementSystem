@@ -44,7 +44,8 @@ public class GetHotelByNameHandlerTests
 
         // assert
         result.Data.Should().NotBeNull();
-        result.Data!.Name.Should().Be("Premier Inn");
+        result.Data!.Count.Should().Be(1);
+        result.Data![0].Name.Should().Be("Premier Inn");
     }
 
     [Fact]

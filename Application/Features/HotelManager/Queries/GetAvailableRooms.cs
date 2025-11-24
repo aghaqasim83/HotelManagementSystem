@@ -1,4 +1,5 @@
 ﻿using Application.Common.Repositories;
+using Application.DTO;
 using Domain.Entities;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
@@ -35,7 +36,7 @@ public class GetAvailableRoomsHandler : IRequestHandler<GetAvailableRoomsRequest
         // Overlap condition: NOT (existing.CheckOut <= requested.CheckIn || existing.CheckIn >= requested.CheckOut)
         var availableRooms = await query
             .Where(r => !r.Bookings.Any(b => !(b.CheckOut <= request.CheckIn || b.CheckIn >= request.CheckOut)))
-            .Select(r => new GetAvailableRoomsResult.RoomDto
+            .Select(r => new RoomDto
             {
                 Id = r.Id,
                 Number = r.Number,
@@ -53,15 +54,6 @@ public class GetAvailableRoomsHandler : IRequestHandler<GetAvailableRoomsRequest
 public class GetAvailableRoomsResult
 {
     public List<RoomDto> Data { get; set; } = new();
-
-    public class RoomDto
-    {
-        public string Id { get; set; } = null!;
-        public string Number { get; set; } = null!;
-        public int Capacity { get; set; }
-        public required string Type { get; set; }
-        public string HotelId { get; set; } = null!;
-    }
 }
 
 public class GetAvailableRoomsRequest : IRequest<GetAvailableRoomsResult>

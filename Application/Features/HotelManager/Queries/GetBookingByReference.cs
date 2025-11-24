@@ -42,7 +42,7 @@ public class GetBookingByReferenceHandler : IRequestHandler<GetBookingByReferenc
                 Id = booking.Room.Id,
                 Number = booking.Room.Number,
                 Capacity = booking.Room.Capacity,
-                Type = (int)booking.Room.Type,
+                Type = booking.Room.Type.ToString(),
                 HotelId = booking.Room.HotelId
             },
         };
