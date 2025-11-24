@@ -10,5 +10,8 @@
   <Folder Name="/SQL/">
     <File Path="ResetDb.sql" />
   </Folder>
+  <Folder Name="/UnitTests/">
+    <Project Path="Application.UnitTests/Application.UnitTests.csproj" Id="fc94a23f-cbfe-491e-b6f1-ecc3fabebfc9" />
+  </Folder>
   <Project Path="HotelManagementSystem/HotelManagementSystem.csproj" />
 </Solution>

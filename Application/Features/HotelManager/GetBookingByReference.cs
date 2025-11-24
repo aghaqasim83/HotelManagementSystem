@@ -1,4 +1,5 @@
 ﻿using Application.Common.Repositories;
+using Application.DTO;
 using Domain.Entities;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
@@ -8,18 +9,6 @@ namespace Application.Features.BookingManager.Queries;
 public class GetBookingByReferenceResult
 {
     public BookingDto? Data { get; set; }
-
-    public class BookingDto
-    {
-        public string Id { get; set; } = null!;
-        public string BookingReference { get; set; } = null!;
-        public string GuestName { get; set; } = null!;
-        public string RoomId { get; set; } = null!;
-        public string? RoomNumber { get; set; }
-        public DateOnly CheckIn { get; set; }
-        public DateOnly CheckOut { get; set; }
-        public int NumberOfGuests { get; set; }
-    }
 }
 
 public class GetBookingByReferenceRequest : IRequest<GetBookingByReferenceResult>
@@ -48,7 +37,7 @@ public class GetBookingByReferenceHandler : IRequestHandler<GetBookingByReferenc
         if (booking is null)
             return new GetBookingByReferenceResult { Data = null };
 
-        var dto = new GetBookingByReferenceResult.BookingDto
+        var dto = new BookingDto
         {
             Id = booking.Id,
             BookingReference = booking.BookingReference,
@@ -57,7 +46,15 @@ public class GetBookingByReferenceHandler : IRequestHandler<GetBookingByReferenc
             RoomNumber = booking.Room?.Number,
             CheckIn = booking.CheckIn,
             CheckOut = booking.CheckOut,
-            NumberOfGuests = booking.NumberOfGuests
+            NumberOfGuests = booking.NumberOfGuests,
+            Room = booking.Room is null ? null : new RoomDto
+            {
+                Id = booking.Room.Id,
+                Number = booking.Room.Number,
+                Capacity = booking.Room.Capacity,
+                Type = (int)booking.Room.Type,
+                HotelId = booking.Room.HotelId
+            },
         };
 
         return new GetBookingByReferenceResult { Data = dto };

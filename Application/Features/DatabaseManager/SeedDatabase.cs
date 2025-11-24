@@ -21,9 +21,9 @@ public class SeedDatabaseResult
 public class SeedDatabaseHandler : IRequestHandler<SeedDatabaseRequest, SeedDatabaseResult>
 {
     private readonly IDbSeeder _dbSeeder;
-    private readonly ILogger<ClearDatabase> _logger;
+    private readonly ILogger<SeedDatabaseHandler> _logger;
 
-    public SeedDatabaseHandler(IDbSeeder dbSeeder, ILogger<ClearDatabase> logger)
+    public SeedDatabaseHandler(IDbSeeder dbSeeder, ILogger<SeedDatabaseHandler> logger)
     {
         _dbSeeder = dbSeeder;
         _logger = logger;

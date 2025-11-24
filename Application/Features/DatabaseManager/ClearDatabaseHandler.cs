@@ -14,12 +14,12 @@ public class ClearDatabaseResult
     public string? Message { get; set; }
 }
 
-public class ClearDatabase : IRequestHandler<ClearDatabaseRequest, ClearDatabaseResult>
+public class ClearDatabaseHandler : IRequestHandler<ClearDatabaseRequest, ClearDatabaseResult>
 {
     private readonly IDbMaintenance _dbMaintenance;
-    private readonly ILogger<ClearDatabase> _logger;
+    private readonly ILogger<ClearDatabaseHandler> _logger;
 
-    public ClearDatabase(IDbMaintenance dbMaintenance, ILogger<ClearDatabase> logger)
+    public ClearDatabaseHandler(IDbMaintenance dbMaintenance, ILogger<ClearDatabaseHandler> logger)
     {
         _dbMaintenance = dbMaintenance;
         _logger = logger;
