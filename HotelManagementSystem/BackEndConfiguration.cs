@@ -1,14 +1,13 @@
 ﻿namespace HotelManagementSystem;
 
+using Application;
+using HotelManagementSystem.Common.Handlers;
 using Infrastructure;
+using Infrastructure.DataAccessManager.EFCore;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi;
-using Infrastructure.DataAccessManager.EFCore;
-using Infrastructure.SeedManager;
-using Application;
-using HotelManagementSystem.Common.Handlers;
 
 public static class BackEndConfiguration
 {
@@ -67,15 +66,6 @@ public static class BackEndConfiguration
     {
         // >>> Create database
         host.CreateDatabase();
-
-        //seed database with system data
-        //host.SeedSystemData();
-
-        //seed database with demo data
-        if (configuration.GetValue<bool>("IsDemoVersion"))
-        {
-            host.SeedDemoData();
-        }
 
         if (environment.IsDevelopment())
         {

@@ -1,9 +1,6 @@
 ﻿using Application.Common.Repositories;
 using Domain.Entities;
 using Domain.Enums;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Infrastructure.SeedManager;
 
