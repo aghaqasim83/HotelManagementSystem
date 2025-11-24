@@ -96,7 +96,3 @@ Contact / next steps
   1. Ensure DB connection (or switch to local SQL or use Docker SQL container).
   2. Start the web project (F5 / Ctrl+F5).
   3. Call endpoints via Postman or open Swagger UI.
-- If you want, I can:
-  - Add OpenAPI examples for each endpoint.
-  - Add integration test templates for booking flow.
-  - Convert EnsureCreated to EF Migrations.
