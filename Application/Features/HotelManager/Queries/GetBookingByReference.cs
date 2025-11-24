@@ -4,17 +4,7 @@ using Domain.Entities;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
-namespace Application.Features.BookingManager.Queries;
-
-public class GetBookingByReferenceResult
-{
-    public BookingDto? Data { get; set; }
-}
-
-public class GetBookingByReferenceRequest : IRequest<GetBookingByReferenceResult>
-{
-    public required string Reference { get; set; }
-}
+namespace Application.Features.HotelManager.Queries;
 
 public class GetBookingByReferenceHandler : IRequestHandler<GetBookingByReferenceRequest, GetBookingByReferenceResult>
 {
@@ -59,4 +49,14 @@ public class GetBookingByReferenceHandler : IRequestHandler<GetBookingByReferenc
 
         return new GetBookingByReferenceResult { Data = dto };
     }
+}
+
+public class GetBookingByReferenceResult
+{
+    public BookingDto? Data { get; set; }
+}
+
+public class GetBookingByReferenceRequest : IRequest<GetBookingByReferenceResult>
+{
+    public required string Reference { get; set; }
 }

@@ -2,21 +2,7 @@
 using MediatR;
 using Microsoft.Extensions.Logging;
 
-namespace Application.Features.DatabaseManager;
-
-public class SeedDatabaseRequest : IRequest<SeedDatabaseResult>
-{
-    /// <summary>
-    /// When true, seed demo data. Defaults to true.
-    /// </summary>
-    public bool SeedData { get; set; } = true;
-}
-
-public class SeedDatabaseResult
-{
-    public bool Success { get; set; }
-    public string? Message { get; set; }
-}
+namespace Application.Features.DatabaseManager.Commands;
 
 public class SeedDatabaseHandler : IRequestHandler<SeedDatabaseRequest, SeedDatabaseResult>
 {
@@ -47,4 +33,18 @@ public class SeedDatabaseHandler : IRequestHandler<SeedDatabaseRequest, SeedData
             return new SeedDatabaseResult { Success = false, Message = ex.Message };
         }
     }
+}
+
+public class SeedDatabaseRequest : IRequest<SeedDatabaseResult>
+{
+    /// <summary>
+    /// When true, seed demo data. Defaults to true.
+    /// </summary>
+    public bool SeedData { get; set; } = true;
+}
+
+public class SeedDatabaseResult
+{
+    public bool Success { get; set; }
+    public string? Message { get; set; }
 }

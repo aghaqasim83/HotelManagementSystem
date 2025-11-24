@@ -1,4 +1,4 @@
-﻿using Application.Features.DatabaseManager;
+﻿using Application.Features.DatabaseManager.Commands;
 using HotelManagementSystem.Common;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -7,9 +7,9 @@ namespace HotelManagementSystem.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class AdminController : BaseApiController
+public class DatabaseManagerController : BaseApiController
 {
-    public AdminController(ISender sender) : base(sender)
+    public DatabaseManagerController(ISender sender) : base(sender)
     {
     }
 

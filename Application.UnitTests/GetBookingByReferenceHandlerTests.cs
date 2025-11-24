@@ -1,5 +1,5 @@
 ﻿using Application.Common.Repositories;
-using Application.Features.BookingManager.Queries;
+using Application.Features.HotelManager.Queries;
 using Domain.Entities;
 using FluentAssertions;
 using Microsoft.EntityFrameworkCore;

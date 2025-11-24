@@ -1,6 +1,7 @@
-﻿using FluentValidation;
+﻿using Application.Features.BookingManager.Commands;
+using FluentValidation;
 
-namespace Application.Features.BookingManager.Commands.Validators;
+namespace Application.Features.BookingManager.Validators;
 
 public class CreateBookingValidator : AbstractValidator<CreateBookingRequest>
 {

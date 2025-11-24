@@ -5,28 +5,6 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Application.Features.HotelManager.Queries;
 
-public class GetAvailableRoomsResult
-{
-    public List<RoomDto> Data { get; set; } = new();
-
-    public class RoomDto
-    {
-        public string Id { get; set; } = null!;
-        public string Number { get; set; } = null!;
-        public int Capacity { get; set; }
-        public required string Type { get; set; }
-        public string HotelId { get; set; } = null!;
-    }
-}
-
-public class GetAvailableRoomsRequest : IRequest<GetAvailableRoomsResult>
-{
-    public required string HotelId { get; set; }
-    public required DateOnly CheckIn { get; set; }
-    public required DateOnly CheckOut { get; set; }
-    public required int NumberOfPeople { get; set; }
-}
-
 public class GetAvailableRoomsHandler : IRequestHandler<GetAvailableRoomsRequest, GetAvailableRoomsResult>
 {
     private readonly ICommandRepository<Room> _roomRepository;
@@ -70,4 +48,26 @@ public class GetAvailableRoomsHandler : IRequestHandler<GetAvailableRoomsRequest
 
         return new GetAvailableRoomsResult { Data = availableRooms };
     }
+}
+
+public class GetAvailableRoomsResult
+{
+    public List<RoomDto> Data { get; set; } = new();
+
+    public class RoomDto
+    {
+        public string Id { get; set; } = null!;
+        public string Number { get; set; } = null!;
+        public int Capacity { get; set; }
+        public required string Type { get; set; }
+        public string HotelId { get; set; } = null!;
+    }
+}
+
+public class GetAvailableRoomsRequest : IRequest<GetAvailableRoomsResult>
+{
+    public required string HotelId { get; set; }
+    public required DateOnly CheckIn { get; set; }
+    public required DateOnly CheckOut { get; set; }
+    public required int NumberOfPeople { get; set; }
 }

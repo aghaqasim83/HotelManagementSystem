@@ -5,22 +5,6 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Application.Features.HotelManager.Queries;
 
-public class GetHotelByNameResult
-{
-    public HotelDto? Data { get; set; }
-
-    public class HotelDto
-    {
-        public string Id { get; set; } = null!;
-        public string Name { get; set; } = null!;
-    }
-}
-
-public class GetHotelByNameRequest : IRequest<GetHotelByNameResult>
-{
-    public required string Name { get; set; }
-}
-
 public class GetHotelByNameHandler : IRequestHandler<GetHotelByNameRequest, GetHotelByNameResult>
 {
     private readonly ICommandRepository<Hotel> _hotelRepository;
@@ -55,4 +39,20 @@ public class GetHotelByNameHandler : IRequestHandler<GetHotelByNameRequest, GetH
 
         return new GetHotelByNameResult { Data = dto };
     }
+}
+
+public class GetHotelByNameResult
+{
+    public HotelDto? Data { get; set; }
+
+    public class HotelDto
+    {
+        public string Id { get; set; } = null!;
+        public string Name { get; set; } = null!;
+    }
+}
+
+public class GetHotelByNameRequest : IRequest<GetHotelByNameResult>
+{
+    public required string Name { get; set; }
 }

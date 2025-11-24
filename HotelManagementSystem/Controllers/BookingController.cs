@@ -1,5 +1,5 @@
 using Application.Features.BookingManager.Commands;
-using Application.Features.BookingManager.Queries;
+using Application.Features.HotelManager.Queries;
 using HotelManagementSystem.Common;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;

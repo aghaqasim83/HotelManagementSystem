@@ -2,17 +2,7 @@
 using MediatR;
 using Microsoft.Extensions.Logging;
 
-namespace Application.Features.DatabaseManager;
-
-public class ClearDatabaseRequest : IRequest<ClearDatabaseResult>
-{
-}
-
-public class ClearDatabaseResult
-{
-    public bool Success { get; set; }
-    public string? Message { get; set; }
-}
+namespace Application.Features.DatabaseManager.Commands;
 
 public class ClearDatabaseHandler : IRequestHandler<ClearDatabaseRequest, ClearDatabaseResult>
 {
@@ -47,4 +37,14 @@ public class ClearDatabaseHandler : IRequestHandler<ClearDatabaseRequest, ClearD
             };
         }
     }
+}
+
+public class ClearDatabaseRequest : IRequest<ClearDatabaseResult>
+{
+}
+
+public class ClearDatabaseResult
+{
+    public bool Success { get; set; }
+    public string? Message { get; set; }
 }

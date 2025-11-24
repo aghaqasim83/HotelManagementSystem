@@ -1,4 +1,4 @@
-﻿using Application.Features.BookingManager.Queries;
+﻿using Application.Features.HotelManager.Queries;
 using FluentValidation;
 
 namespace Application.Features.BookingManager.Validators;

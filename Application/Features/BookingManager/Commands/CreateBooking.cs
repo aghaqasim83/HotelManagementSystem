@@ -5,20 +5,6 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Application.Features.BookingManager.Commands;
 
-public class CreateBookingResult
-{
-    public Booking? Data { get; set; }
-}
-
-public class CreateBookingRequest : IRequest<CreateBookingResult>
-{
-    public required string RoomId { get; set; }
-    public string GuestName { get; set; } = null!;
-    public DateOnly CheckIn { get; set; }
-    public DateOnly CheckOut { get; set; }
-    public int NumberOfGuests { get; set; }
-}
-
 public class CreateBookingHandler : IRequestHandler<CreateBookingRequest, CreateBookingResult>
 {
     private readonly ICommandRepository<Booking> _repository;
@@ -150,4 +136,18 @@ public class CreateBookingHandler : IRequestHandler<CreateBookingRequest, Create
         // Assign the found room to the request so later processing will book that room
         request.RoomId = candidateRoom.Id;
     }
+}
+
+public class CreateBookingResult
+{
+    public Booking? Data { get; set; }
+}
+
+public class CreateBookingRequest : IRequest<CreateBookingResult>
+{
+    public required string RoomId { get; set; }
+    public string GuestName { get; set; } = null!;
+    public DateOnly CheckIn { get; set; }
+    public DateOnly CheckOut { get; set; }
+    public int NumberOfGuests { get; set; }
 }
